@@ -14,7 +14,8 @@ public class BankController {
     @GetMapping("/transfer")
     @ResponseBody
     public String transfer(@RequestParam("accountNo") int accountNo,
-                           @RequestParam("amount") final int amount) {
+                           @RequestParam("amount") final int amount,
+                           @RequestParam("_csrf") final String _csrf) {
         log.info("Transfer {} to {}", amount, accountNo);
         return "Transfer "+amount+" to "+accountNo;
     }
@@ -22,7 +23,8 @@ public class BankController {
     @PostMapping("/transfer")
     @ResponseStatus(HttpStatus.OK)
     public void transfer2(@RequestParam("accountNo") int accountNo,
-                          @RequestParam("amount") final int amount) {
+                          @RequestParam("amount") final int amount,
+                          @RequestParam("_csrf") final String _csrf) {
         log.info("Transfer {} to {}", amount, accountNo);
     }
 }
